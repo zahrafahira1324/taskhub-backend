@@ -1,13 +1,10 @@
 <?php
-Route::get('/hello', function () {
-    return 'Hello, API is working!';
-});
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\TaskController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TaskController;
 
 // Public routes (for login and registration)
 Route::post('/register', [AuthController::class, 'register']);
