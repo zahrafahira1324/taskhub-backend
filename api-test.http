@@ -1,0 +1,9 @@
+POST http://taskhub-backend.test/api/register
+Content-Type: application/json
+
+{
+    "name": "nama_anda",
+    "email": "emailanda@contoh.com",
+    "password": "password",
+    "password_confirmation": "password"
+}
