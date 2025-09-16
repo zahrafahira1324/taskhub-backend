@@ -1,0 +1,153 @@
+/* Palet Warna:
+   - Latar belakang: #f0f8ff (Biru Muda)
+   - Kartu: #ffffff (Putih)
+   - Header & Form: #e0f7fa (Hijau Mint Muda)
+   - Tombol utama: #4a90e2 (Biru Cerah)
+   - Tombol Selesai: #7ed321 (Hijau Terang)
+   - Tombol Hapus: #d0021b (Merah Terang)
+*/
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f8ff; /* Latar belakang biru muda */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.dashboard-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0f7fa; /* Garis pemisah */
+}
+
+.dashboard-header h1 {
+    font-size: 2.5em;
+    color: #4a90e2; /* Judul biru */
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px; /* Tombol bulat */
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logout-btn {
+    background-color: #d0021b; /* Merah terang */
+}
+
+.logout-btn:hover {
+    background-color: #a00115;
+}
+
+.add-task-btn {
+    background-color: #4a90e2; /* Biru cerah */
+}
+
+.add-task-btn:hover {
+    background-color: #3a75c4;
+}
+
+.selesai-btn {
+    background-color: #7ed321; /* Hijau terang */
+}
+
+.selesai-btn:hover {
+    background-color: #64b71d;
+}
+
+.delete-btn {
+    background-color: #d0021b; /* Merah terang */
+}
+
+.delete-btn:hover {
+    background-color: #a00115;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #e0f7fa; /* Latar belakang formulir hijau mint */
+    border-radius: 8px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+form input, form select, form textarea {
+    padding: 12px;
+    border: 1px solid #c8e6c9;
+    border-radius: 6px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #4a90e2; /* Garis samping biru */
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.task-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.completed-task {
+    background-color: #e6ffec; /* Latar belakang hijau muda */
+    border-left-color: #7ed321; /* Garis samping hijau terang */
+}
+
+.completed-text {
+    color: #7ed321;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}

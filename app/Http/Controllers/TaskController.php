@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -23,9 +24,9 @@ class TaskController extends Controller
             $tasks->where('prioritas', $request->prioritas);
         }
 
-        // Sorting berdasarkan deadline
-        if ($request->has('sort') && $request->sort === 'deadline') {
-            $tasks->orderBy('tanggal_deadline', 'asc');
+        // Filter berdasarkan status selesai
+        if ($request->has('selesai')) {
+            $tasks->where('selesai', $request->selesai);
         }
 
         return response()->json($tasks->get());
@@ -45,7 +46,6 @@ class TaskController extends Controller
 
         $deadline = Carbon::createFromFormat('d/m/Y', $request->tanggal_deadline);
 
-        // Cek bonus: tambahkan field 'butuh_perhatian'
         $butuhPerhatian = false;
         if (str_contains(strtolower($request->judul), 'urgent') || str_contains(strtolower($request->judul), 'klien') || str_contains(strtolower($request->deskripsi), 'urgent') || str_contains(strtolower($request->deskripsi), 'klien')) {
             $butuhPerhatian = true;
@@ -65,10 +65,9 @@ class TaskController extends Controller
     /**
      * Menandai task sebagai selesai.
      */
-    public function selesaikan(Task $task, Request $request)
+    public function selesaikan(Task $task)
     {
-        // Pastikan task milik user yang sedang login
-        if ($task->user_id !== $request->user()->id) {
+        if ($task->user_id !== Auth::id()) {
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
@@ -76,6 +75,20 @@ class TaskController extends Controller
         $task->save();
 
         return response()->json(['message' => 'Task berhasil diselesaikan'], 200);
+    }
+
+    /**
+     * Menghapus task.
+     */
+    public function destroy(Task $task)
+    {
+        if ($task->user_id !== Auth::id()) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+        
+        $task->delete();
+
+        return response()->json(['message' => 'Task berhasil dihapus'], 200);
     }
 
     /**
