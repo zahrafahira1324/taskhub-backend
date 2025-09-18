@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Semua rute untuk task ada di sini
     Route::get('/tasks', [TaskController::class, 'index']);
     Route::post('/tasks', [TaskController::class, 'store']);
-    Route::put('/tasks/{id}/selesaikan', [TaskController::class, 'selesaikan']);
-    Route::delete('/tasks/{id}', [TaskController::class, 'destroy']);
+    Route::put('/tasks/{task}/selesaikan', [TaskController::class, 'selesaikan']);
+    Route::delete('/tasks/{task}', [TaskController::class, 'destroy']);
     Route::get('/tasks/reminder', [TaskController::class, 'reminder']);
 });
